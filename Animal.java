@@ -6,6 +6,7 @@ public class Animal {
     private String birthday;
     private Type type;
     List<Animal> animals = new ArrayList<>();
+    List<String> commands = new ArrayList<>();
 
     public Animal() {
 
@@ -49,5 +50,26 @@ public class Animal {
         for(Animal a : animals) {
             System.out.println(a);
         }
+    }
+
+    public void showCommands() {
+        for(String command : commands) {
+            System.out.println(command);
+        }
+    }
+
+    public List<String> addCommand(String command) {
+        commands.add(command);
+        return commands;
+    }
+
+    public Animal getAnimalByName(String name) {
+        for(Animal animal : animals) {
+            if(animal.getName().equalsIgnoreCase(name)) {
+                return animal;
+            }
+        }
+        System.out.println("Животного с таким именем не найдено");
+        return null;
     }
 }
