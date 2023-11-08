@@ -1,10 +1,6 @@
 import java.util.Scanner;
 
 public class Menu {
-    // Animal animal;
-    // Dog dog;
-    // Cat cat;
-    // Humster humster;
     private boolean work = true;
     Scanner sc = new Scanner(System.in);
     Service service = new Service();
@@ -14,53 +10,46 @@ public class Menu {
         while(work) {
             showCommands();
             String s = sc.nextLine();
-            int num = Integer.parseInt(s);
+            int num = checkNumber(s);
+            
             switch(num) {
                 case 1:
-                    System.out.print("Введите имя животного: ");
-                    String name = sc.nextLine();
-                    System.out.print("Введите тип животного: DOG, CAT, HUMSTER: ");
-                    String t = sc.nextLine();
-                    Type type = Type.valueOf(t);
-                    service.addAnimal(name, type);
+                    try {
+                        String name = inputName();
+                        Type type = inputType();
+                        service.addAnimal(name, type);
+                        
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Введите DOG, CAT или HUMSTER");
+                    }
                     break;
                 case 2:
-                    System.out.print("Введите тип животного: DOG, CAT, HUMSTER: ");
-                    String r = sc.nextLine();
-                    Type res = Type.valueOf(r);
-                    service.showAnimals(res);
+                    try {
+                        Type type2 = inputType();
+                        service.showAnimals(type2);
+                    } catch(IllegalArgumentException e) {
+                        System.out.println("Введите DOG, CAT или HUMSTER");
+                    }
                     break;
                 case 3:
-                    System.out.print("Введите имя животного: ");
-                    String nameAnimal = sc.nextLine();
-                    System.out.print("Введите тип животного: DOG, CAT, HUMSTER: ");
-                    String q = sc.nextLine();
-                    Type typeq = Type.valueOf(q);
-                    service.showAnimalsCommands(nameAnimal, typeq);
+                    String name3 = inputName();
+                    Type type3 = inputType();
+                    service.showAnimalsCommands(name3, type3);
                     break;
                 case 4:
                     System.out.println("Выберите имя животного и его класс");
-                    System.out.print("имя: ");
-                    String n = sc.nextLine();
-                    System.out.print("класс: ");
-                    String c = sc.nextLine();
-                    Type clas = Type.valueOf(c);
+                    String name4 = inputName();
+                    Type type4 = inputType();
                     String newCommand = sc.nextLine();
-                    service.learnNewCommand(n, clas, newCommand);
-                    // if(clas.name().equalsIgnoreCase(Type.DOG.name())) {
-                    //     Dog findDog = dog.getAnimalByName(n);
-                    //     findDog.addCommand(newCommand);
-                    // } else if(clas.name().equalsIgnoreCase(Type.CAT.name())) {
-                    //     Animal findCat = cat.getAnimalByName(n);
-                    //     findCat.addCommand(newCommand);
-                    // } else if(clas.name().equalsIgnoreCase(Type.HUMSTER.name())) {
-                    //     Animal findHumster = humster.getAnimalByName(n);
-                    //     findHumster.addCommand(newCommand);
-                    // }
+                    service.learnNewCommand(name4, type4, newCommand);
                     break;
                 case 5:
                     work = false;
                     sayGoodbye();
+                    break;
+                default:
+                    System.out.println("Введите значение от 1 до 5");
+                    break;
             }
         }
     }
@@ -79,5 +68,33 @@ public class Menu {
 
     private void sayGoodbye() {
         System.out.println("Всего доброго!");
+    }
+
+    private String inputName() {
+        System.out.print("Введите имя животного: ");
+        String name = sc.nextLine();
+        return name;
+    }
+
+    private Type inputType() {
+        System.out.print("Введите тип животного: DOG, CAT, HUMSTER: ");
+        String t = sc.nextLine().toUpperCase();
+        Type type = Type.valueOf(t);
+        return type;
+    }
+
+    public static boolean isNumeric(String strNum) {
+        return strNum.matches("-?\\d+(\\.\\d+)?");
+    }
+
+    private int checkNumber(String num) {
+        try {
+            if(isNumeric(num)) {
+                return Integer.parseInt(num);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Не понимаю почему, но это работает");
+        }
+        return 0;
     }
 }

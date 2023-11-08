@@ -1,12 +1,14 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Animal {
+public class Animal implements Serializable{
     private String name;
     private String birthday;
     private Type type;
     List<Animal> animals = new ArrayList<>();
     List<String> commands = new ArrayList<>();
+    Counter counter = new Counter();
 
     public Animal() {
 
@@ -43,16 +45,24 @@ public class Animal {
             }
         }
         animals.add(new Animal(name, type));
-        System.out.println("Животное добавлено!");
+        counter.add();
+        System.out.println("Животное добавлено! Counter = " + counter.getCount());
     } 
 
     public void showAnimals() {
+        if(animals.isEmpty()) {
+            System.out.println("Животных такого типа пока нет. Вы можете добавить их, " +
+                    "вернувшись к пункту 1");
+        }
         for(Animal a : animals) {
             System.out.println(a);
         }
     }
 
     public void showCommands() {
+        if(commands.isEmpty()) {
+            System.out.println("Это животное пока ничего не умеет");
+        }
         for(String command : commands) {
             System.out.println(command);
         }
@@ -69,7 +79,7 @@ public class Animal {
                 return animal;
             }
         }
-        System.out.println("Животного с таким именем не найдено");
+        System.out.println("Животное с таким именем не найдено");
         return null;
     }
 }

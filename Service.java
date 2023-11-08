@@ -5,7 +5,7 @@ public class Service {
     Dog dog = new Dog();
     Cat cat = new Cat();
     Humster humster = new Humster();
-    List commands = new ArrayList<>();
+    List<String> commands = new ArrayList<>();
 
     // 1 - добавить животное
     public void addAnimal(String name, Type type) {
@@ -43,7 +43,7 @@ public class Service {
     }
 
     // 4 - обучить животное новой команде
-    public List learnNewCommand(String name, Type type, String command) {
+    public List<String> learnNewCommand(String name, Type type, String command) {
         if(type.name().equalsIgnoreCase(Type.DOG.name())) {
             Animal d = dog.getAnimalByName(name);
             d.addCommand(command);
