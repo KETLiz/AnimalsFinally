@@ -9,6 +9,7 @@ public class Animal implements Serializable{
     List<Animal> animals = new ArrayList<>();
     List<String> commands = new ArrayList<>();
     Counter counter = new Counter();
+    WriteAnimal writeAnimal = new WriteAnimal();
 
     public Animal() {
 
@@ -44,8 +45,10 @@ public class Animal implements Serializable{
                 }
             }
         }
-        animals.add(new Animal(name, type));
+        Animal animal = new Animal(name, type);
+        animals.add(animal);
         counter.add();
+        writeAnimal.write(animal, type);
         System.out.println("Животное добавлено! Counter = " + counter.getCount());
     } 
 

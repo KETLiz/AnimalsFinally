@@ -1,4 +1,6 @@
-public class Counter {
+import java.io.Serializable;
+
+public class Counter implements Serializable{
     private static int count = 0;
 
     public int add() {
