@@ -1,0 +1,30 @@
+  166  wget -c https://dev.mysql.com/get/mysql-apt-config_0.8.16-1_all.deb
+  167  apt update
+  168  dpkg -i mysql-apt-config_0.8.16-1_all.deb
+  169  apt update
+  170  apt-get install mysql-server
+  171  systemctl status mysql
+  172  mysql -u root -p
+  173  wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-j_8.0.32-1ubuntu22.04_all.deb
+  174  dpkg -i mysql-connector-j_8.0.32-1ubuntu22.04_all.deb
+  175  dpkg --purge mysql-connector-j
+  176  history
+  177  cat > pets.txt
+  178  nano pets.txt
+  179  cat pets.txt
+  180  cat > PackAnimals.txt
+  181  cat PackAnimals
+  182  cat PackAnimals.txt
+  183  nano PackAnimals.txt
+  184  cat PackAnimals.txt
+  185  ll
+  186  ls
+  187  mkdir animals
+  188  ls
+  189  mv pets.txt /home/liza/animals
+  190  mv PackAnimals.txt /home/liza/animals
+  191  ls
+  192  cd /animals
+  193  cd animals
+  194  ll
+  195  history
