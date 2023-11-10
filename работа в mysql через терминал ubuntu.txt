@@ -1,0 +1,149 @@
+root@liza-VirtualBox:/home/liza/animals# mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.35-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE HumansFriends
+    -> ;
+Query OK, 1 row affected (0,22 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| HumansFriends      |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0,20 sec)
+
+mysql> USE HumansFriends;
+Database changed
+mysql> CREATE TABLE PetAnimals(Id int, ClassOfPet varchar(45));
+Query OK, 0 rows affected (0,26 sec)
+
+mysql> CREATE TABLE PackAnimals(Id int, ClassOfPack varchar(45));
+Query OK, 0 rows affected (0,32 sec)
+
+
+mysql> CREATE TABLE Dogs(Name varchar(45), birthday date, commands varchar(25));
+
+Query OK, 0 rows affected (0,15 sec)
+
+
+mysql> INSERT INTO Dogs VALUES('Sharic', '2020-12-09', 'bark');
+Query OK, 1 row affected (0,03 sec)
+
+mysql> INSERT INTO Dogs VALUES('Bobik', '2022-11-04', 'jump');
+Query OK, 1 row affected (0,04 sec)
+
+
+
+mysql> CREATE TABLE Cats(Name varchar(45), birthday date, commands varchar(25));
+
+Query OK, 0 rows affected (0,12 sec)
+
+mysql> INSERT INTO Cats VALUES('Murzik', '2018-01-23', 'sleep');
+Query OK, 1 row affected (0,03 sec)
+
+mysql> INSERT INTO Cats VALUES('Murzik', '2022-01-01', 'murr');
+Query OK, 1 row affected (0,03 sec)
+
+
+
+mysql> CREATE TABLE Humsters(Name varchar(45), birthday date, commands varchar(25));
+Query OK, 0 rows affected (0,19 sec)
+
+mysql> INSERT INTO Humsters VALUES('Jerry', '2023-09-10', 'eat');
+Query OK, 1 row affected (0,03 sec)
+
+
+mysql> CREATE TABLE Hourses(Name varchar(25), birthday date, commands varchar(25));
+Query OK, 0 rows affected (0,30 sec)
+
+mysql> INSERT INTO Hourses VALUES('Spirit', '2010-08-12', 'jump');
+Query OK, 1 row affected (0,05 sec)
+
+
+mysql> CREATE TABLE Camels(Name varchar(25), birthday date, commands varchar(25));
+Query OK, 0 rows affected (0,30 sec)
+
+mysql> INSERT INTO Camels VALUES('Desert', '2022-04-10', 'spit');
+Query OK, 1 row affected (0,07 sec)
+
+mysql> INSERT INTO Camels VALUES('Disiel', '2011-11-11', 'lie');
+Query OK, 1 row affected (0,05 sec)
+
+
+mysql> CREATE TABLE Donkeys(Name varchar(25), birthday date, commands varchar(25));
+Query OK, 0 rows affected (0,13 sec)
+
+mysql> INSERT INTO Donkeys VALUES('Ia', '2023-02-12', 'skip');
+Query OK, 1 row affected (0,03 sec)
+
+
+mysql> SELECT * FROM Cats;
++--------+------------+----------+
+| Name   | birthday   | commands |
++--------+------------+----------+
+| Murzik | 2018-01-23 | sleep    |
+| Murzik | 2022-01-01 | murr     |
++--------+------------+----------+
+2 rows in set (0,01 sec)
+
+mysql> SELECT * FROM Dogs;
++--------+------------+----------+
+| Name   | birthday   | commands |
++--------+------------+----------+
+| Sharic | 2020-12-09 | bark     |
+| Bobik  | 2022-11-04 | jump     |
++--------+------------+----------+
+2 rows in set (0,01 sec)
+
+mysql> SELECT * FROM Humsterss;
+ERROR 1146 (42S02): Table 'HumansFriends.Humsterss' doesn't exist
+mysql> SELECT * FROM Humsters;
++-------+------------+----------+
+| Name  | birthday   | commands |
++-------+------------+----------+
+| Jerry | 2023-09-10 | eat      |
++-------+------------+----------+
+1 row in set (0,02 sec)
+
+mysql> SELECT * FROM Hourses;
++--------+------------+----------+
+| Name   | birthday   | commands |
++--------+------------+----------+
+| Spirit | 2010-08-12 | jump     |
++--------+------------+----------+
+1 row in set (0,00 sec)
+
+mysql> SELECT * FROM Camels;
++--------+------------+----------+
+| Name   | birthday   | commands |
++--------+------------+----------+
+| Desert | 2022-04-10 | spit     |
+| Disiel | 2011-11-11 | lie      |
++--------+------------+----------+
+2 rows in set (0,01 sec)
+
+mysql> SELECT * FROM Donkeys;
++------+------------+----------+
+| Name | birthday   | commands |
++------+------------+----------+
+| Ia   | 2023-02-12 | skip     |
++------+------------+----------+
+1 row in set (0,01 sec)
+
+
